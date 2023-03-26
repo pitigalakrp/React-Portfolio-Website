@@ -2,7 +2,7 @@ import Head from 'next/head'
 import {BsFillMoonStarsFill} from 'react-icons/bs';
 import {AiFillTwitterCircle, AiFillLinkedin, AiFillYoutube, AiFillGithub} from 'react-icons/ai';
 import Image from 'next/image';
-import deved from '../public/dev-ed-wave.png';
+import deved from '../public/dev-ed-wave.jpg';
 import design from '../public/design.png';
 import code from '../public/code.png';
 import consulting from '../public/consulting.png';
@@ -13,6 +13,9 @@ import web4 from '../public/web4.png';
 import web5 from '../public/web5.png';
 import web6 from '../public/web6.png';
 import {useState} from 'react';
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import resume from './resume';
 
 export default function Home() {
   const [darkMode, setDarkMode] = useState(false); 
@@ -34,7 +37,12 @@ export default function Home() {
               <h1 className="text-xl font-burtons">developedby</h1>
               <ul className="flex items-center">
                 <li><BsFillMoonStarsFill onClick={() => setDarkMode(!darkMode)} className="cursor-pointer text-2xl"/></li>
-                <li><a className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white py-2 px-4 rounded-md ml-8" href="#">Resume</a></li>
+                <BrowserRouter>
+                  <Routes>
+                    <Route path='resume' element={< resume/>} />
+                  </Routes>
+                </BrowserRouter>
+                <li><a className="bg-gradient-to-r from-cyan-500 to-teal-500 text-white py-2 px-4 rounded-md ml-8">Resume</a></li>
               </ul>
 
             </nav>
@@ -57,6 +65,7 @@ export default function Home() {
 
             <div className="relative mx-auto bg-gradient-to-b from-cyan-500 rounded-full w-80 h-80 mt-20 overflow-hidden md:h-96 md:w-96">
               <Image src={deved} layout="fill" objectFit="cover"/>
+              
             </div>
 
             <div>
